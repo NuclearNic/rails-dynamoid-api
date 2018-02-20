@@ -1,7 +1,8 @@
 # API exposed to X-Facade
 class CustomersController < ApplicationController
   def index
-    puts 'index'
+    customers = Customer.all
+    render json: customers
   end
 
   def create
@@ -10,7 +11,8 @@ class CustomersController < ApplicationController
   end
 
   def show
-    puts 'show'
+    customer = Customer.find_by_cid(params[:id])
+    render json: customer
   end
 
   def update
@@ -18,6 +20,6 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    puts 'destroy'
+    head 200
   end
 end

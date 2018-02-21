@@ -2,13 +2,14 @@
 class Customer
   include Dynamoid::Document
 
-  # has_many :products
+  has_many :products
 
   # Definition of table structure
   table name: :customers,
         key: :cid,
         read_capacity: 5,
         write_capacity: 5
+
   # Fields
   field :email
   field :first_name

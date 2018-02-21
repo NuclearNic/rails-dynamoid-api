@@ -6,8 +6,11 @@ class CustomersController < ApplicationController
   end
 
   def create
-    puts 'create'
-    # binding.pry
+    if Customer.create(customer_params)
+      head 200
+    else
+      head 400
+    end
   end
 
   def show
@@ -21,5 +24,11 @@ class CustomersController < ApplicationController
 
   def destroy
     head 200
+  end
+
+  private
+
+  def customer_params
+    params.permit(:cid, :email, :first_name).to_hash
   end
 end
